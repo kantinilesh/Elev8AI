@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to ISL Gestures Translator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #input-text {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    #gestures-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .gesture-box {
+      width: 100px;
+      height: 120px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .gesture-box img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 5px;
+    }
+
+    .gesture-label {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .no-gesture {
+      color: #999;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>Text to ISL Gestures Translator</h1>
+  <input type="text" id="input-text" placeholder="Enter text..." oninput="showGestures()">
+  <div id="gestures-container"></div>
+
+  <script>
+    // Mapping of characters to their corresponding ISL gesture images
+    const islMapping = {
+      'A': 'data/A.jpg',
+      'B': 'data/B.jpg',
+      'C': 'data/C.jpg',
+      'D': 'data/D.jpg',
+      'E': 'data/E.jpg',
+      'F': 'data/F.jpg',
+      'G': 'data/G.jpg',
+      'H': 'data/H.jpg',
+      'I': 'data/I.jpg',
+      'J': 'data/J.jpg',
+      'K': 'data/K.jpg',
+      'L': 'data/L.jpg',
+      'M': 'data/M.jpg',
+      'N': 'data/N.jpg',
+      'O': 'data/O.jpg',
+      'P': 'data/P.jpg',
+      'Q': 'data/Q.jpg',
+      'R': 'data/R.jpg',
+      'S': 'data/S.jpg',
+      'T': 'data/T.jpg',
+      'U': 'data/U.jpg',
+      'V': 'data/V.jpg',
+      'W': 'data/W.jpg',
+      'X': 'data/X.jpg',
+      'Y': 'data/Y.jpg',
+      'Z': 'data/Z.jpg',
+      '0': 'data/0.jpg',
+      '1': 'data/1.jpg',
+      '2': 'data/2.jpg',
+      '3': 'data/3.jpg',
+      '4': 'data/4.jpg',
+      '5': 'data/5.jpg',
+      '6': 'data/6.jpg',
+      '7': 'data/7.jpg',
+      '8': 'data/8.jpg',
+      '9': 'data/9.jpg',
+    };
+
+    // Function to display ISL gestures
+    function showGestures() {
+      const inputText = document.getElementById('input-text').value.toUpperCase();
+      const gesturesContainer = document.getElementById('gestures-container');
+      gesturesContainer.innerHTML = ''; // Clear previous results
+
+      for (const char of inputText) {
+        if (char === ' ') continue; // Skip spaces
+
+        const gestureBox = document.createElement('div');
+        gestureBox.className = 'gesture-box';
+
+        if (islMapping[char]) {
+          const img = document.createElement('img');
+          img.src = islMapping[char];
+          img.alt = `ISL Gesture for ${char}`;
+          gestureBox.appendChild(img);
+
+          const label = document.createElement('div');
+          label.className = 'gesture-label';
+          label.textContent = char;
+          gestureBox.appendChild(label);
+        } else {
+          gestureBox.textContent = char;
+          gestureBox.classList.add('no-gesture');
+        }
+
+        gesturesContainer.appendChild(gestureBox);
+      }
+    }
+  </script>
+</body>
+</html>
