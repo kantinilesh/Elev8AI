@@ -4,7 +4,6 @@ import { Hero } from "@/components/Hero";
 import { BlindFeatures } from "@/components/features/BlindFeatures";
 import { DeafFeatures } from "@/components/features/DeafFeatures";
 import { AllFeatures } from "@/components/features/AllFeatures";
-import { Team } from "@/components/Team";
 
 export default function Home() {
   return (
